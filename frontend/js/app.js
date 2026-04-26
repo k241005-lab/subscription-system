@@ -2,7 +2,14 @@
 //  app.js — Global JavaScript for Subscription Tracker
 // ============================================================
 
-const API_BASE = 'http://localhost:5000/api';
+// ── API Configuration ─────────────────────────────────────────
+// For local development: use http://localhost:5000/api
+// For production: use your Vercel backend URL
+// Example: https://your-project.vercel.app/api
+const isProduction = !window.location.hostname.includes('localhost');
+const API_BASE = isProduction 
+  ? 'https://your-project.vercel.app/api'  // ← Update with your Vercel URL
+  : 'http://localhost:5000/api';
 
 // ── Auth Helpers ──────────────────────────────────────────────
 const Auth = {
